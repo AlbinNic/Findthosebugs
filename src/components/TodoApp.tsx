@@ -5,14 +5,14 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 import TodoStats from "./TodoStats";
 
-let nextId = 1;
+
 
 export default function TodoApp() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState<Filter>("all");
 
   function addTodo(text: string) {
-    setTodos((prev) => [...prev, { id: nextId++, text, completed: false }]);
+    setTodos((prev) => [...prev, { id: Date.now(), text, completed: false }]);
   }
 
   function toggleTodo(id: number) {
@@ -29,7 +29,7 @@ export default function TodoApp() {
 
   const filteredTodos = todos.filter((todo) => {
     if (filter === "active") return !todo.completed;
-    if (filter === "completed") return !todo.completed;
+    if (filter === "completed") return todo.completed;
     return true;
   });
 
