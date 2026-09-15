@@ -18,7 +18,7 @@ export default function TodoList({ todos, onToggle, onDelete }: TodoListProps) {
         <TodoItem
           key={todo.id}
           todo={todo}
-          onToggle={() => onToggle(index)}
+          onToggle={() => onToggle(todo.id)}
           onDelete={() => onDelete(todo.id)}
         />
       ))}
